@@ -37,13 +37,18 @@ class Paardensprong {
       this.guessedWord = '';
     }
     start(){
-        //code om game te starten
-        this.shuffleArray(this.wordList);
-        //this.word = this.wordList[this.score];      randomize het woord
-        this.shuffleArray(this.possibleSequences);
-        this.renderGame();
-        this.fillBoxes();
+        this.startGame();
         this.boxClick();
+    }
+    startGame(){
+      this.gameBox.innerHTML = ``;
+            this.guessedWord = '';
+            this.shuffleArray(this.wordList);
+            this.word = this.wordList[this.score]; 
+            console.log(this.word);
+            this.shuffleArray(this.possibleSequences);
+            this.renderGame();
+            this.fillBoxes();
     }
     renderGame(){
       for(let i = 0; i <= 8; i++){
@@ -70,7 +75,7 @@ class Paardensprong {
       });
   }
   printWinScreen(){
-    this.gameBox.innerHTML = `<p>${this.word} is correct!!<p> <button>New Word</button>`
+    this.gameBox.innerHTML = `<p>${this.word} is correct!!<p> <button class=newWord>New Word</button>`
   }
     boxClick(){
         this.gameBox.addEventListener('click', (e)=>{
@@ -91,6 +96,9 @@ class Paardensprong {
               this.guessedWord = '';
             })
           }
+          else if(e.target.classList.contains('newWord')){
+            this.startGame();
+          }
         })
     }
   }
@@ -100,8 +108,6 @@ class Paardensprong {
 
   /*oke wat moet ik nog doen?
     als geen paardensprong geef melding dat geen paardensprong is. (animatie met schudden van box)
-    als woord geraden is laat nieuw button zien voor nieuw spel.
-    als op nieuw spel knop gedrukt is start nieuw spel
     css voor geraden woord maken
     */
   
