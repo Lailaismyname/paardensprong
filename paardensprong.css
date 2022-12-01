@@ -1,0 +1,43 @@
+/* `````````````````````````COLOR PALETTE ````````````````````
+Space Cadette               #141B41
+Solid Pink                  #873D48
+Pink Lavender               #DCB6D5
+*/
+*{
+    padding: 0px;
+    margin: 0px;
+    box-sizing: content-box;
+}
+body{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+
+}
+#gameBox{
+    display: grid;
+    grid-template-columns:  repeat(3, 1fr);
+    border: 2px solid;
+    width: 80%;
+}
+#gameBox > div{
+    width:100%;
+    height: 10rem;
+    background: #873D48;
+    border: 2px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    font-weight: 900;
+    color: #DCB6D5;
+}
+#gameBox > div > img {
+    width: 80%;
+}
+#gameBox > #middleBox{
+    background-image: url("img/unicorn.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
