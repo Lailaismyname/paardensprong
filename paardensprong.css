@@ -17,20 +17,23 @@ body{
 #gameBox{
     display: grid;
     grid-template-columns:  repeat(3, 1fr);
-    border: 2px solid;
+    border: 12px solid #141B41;
     width: 80%;
+    border-radius: 10px;
+    overflow: hidden;
 }
 #gameBox > div{
     width:100%;
     height: 10rem;
     background: #873D48;
-    border: 2px solid black;
+    border: 2px solid #141B41;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 40px;
     font-weight: 900;
     color: #DCB6D5;
+    text-shadow: 2px 2px #141B41;
 }
 #gameBox > div > img {
     width: 80%;
@@ -40,4 +43,6 @@ body{
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    font-size: 30px;
+    text-shadow: 2px 2px #141B41;
 }

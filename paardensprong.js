@@ -53,7 +53,7 @@ class Paardensprong {
     renderGame(){
       for(let i = 0; i <= 8; i++){
         if(i == 4){
-          this.gameBox.innerHTML += `<div id="middleBox" class="reset"></div>`
+          this.gameBox.innerHTML += `<div id="middleBox" class="reset">reset</div>`
         }else if(i > 4){
           this.gameBox.innerHTML += `<div id="box${i}" class="box"></div>`;
         }
