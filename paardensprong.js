@@ -93,8 +93,8 @@ class Paardensprong {
     }
     else{
         this.illegalMoveAnimation(currentClick);
-        item.style.background = '#873D48';
-        item.style.color = '#DCB6D5';
+        e.target.style.background = '#873D48';
+        e.target.style.color = '#DCB6D5';
     }
   }
   checkLegalMove(previousclick, currentClick,e){
@@ -167,7 +167,7 @@ class Paardensprong {
 
   /*oke wat moet ik nog doen?
    animatie 1 x afspelen als illegale zet. 
-    als geen paardensprong reset achtergrond kleur
+    previousclick aanpassen zodat ie verder gaat. 
     help knop met uitleg maken
     */
   
