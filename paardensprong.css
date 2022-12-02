@@ -15,16 +15,19 @@ body{
 
 }
 #gameBox{
+    height: 500px;
     display: grid;
     grid-template-columns:  repeat(3, 1fr);
     border: 12px solid #141B41;
     width: 80%;
     border-radius: 10px;
     overflow: hidden;
+    background: #873D48;
+    color: #DCB6D5;
 }
 #gameBox > div{
     width:100%;
-    height: 10rem;
+    height: 100%;
     background: #873D48;
     border: 2px solid #141B41;
     display: flex;
@@ -45,4 +48,37 @@ body{
     background-position: center;
     font-size: 30px;
     text-shadow: 2px 2px #141B41;
+}
+/*      winscherm               */
+#gameBox >.win{
+    display: flex;
+    flex-direction: column;
+    border: none;
+    margin-left: 100%;
+}
+#gameBox > p{
+    font-size: 40px;
+}
+.newWord{
+    background: #141B41;
+    color:#DCB6D5;
+    width: 100px;
+    height: 50px;
+    border: none;
+    border-radius: 5px;
+
+}
+
+/* key frames voor foute sprong: */
+@keyframes illegalMove {
+    0% { transform: translate(0, 0) rotate(0deg); }
+    25% { transform: translate(5px, 5px) rotate(5deg); }
+    50% { transform: translate(0, 0) rotate(0eg); }
+    75% { transform: translate(-5px, 5px) rotate(-5deg); }
+    100% { transform: translate(0, 0) rotate(0deg); }
+  }
+.illegalMove {
+    animation-name: illegalMove;
+    animation-duration: 1s;
+    background: #141B41;
 }

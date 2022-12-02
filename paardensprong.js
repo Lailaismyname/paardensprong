@@ -35,6 +35,8 @@ class Paardensprong {
       this.word = this.wordList[this.score]; // word :  this.word;
       this.gameBox = document.getElementById('gameBox');
       this.guessedWord = '';
+      this.previousClick;
+      this.currentClick;
     }
     start(){
         this.startGame();
@@ -75,11 +77,60 @@ class Paardensprong {
       });
   }
   printWinScreen(){
-    this.gameBox.innerHTML = `<p>${this.word} is correct!!<p> <button class=newWord>New Word</button>`
+    this.gameBox.innerHTML = `<div class="win"><p>${this.word} is correct!!<p><button class=newWord>New Word</button></div>`
+  }
+  illegalMoveAnimation(currentClick){
+    document.getElementById('box'+this.currentClick).classList.add('illegalMove');
+            setTimeout(function(){
+            document.getElementById('box'+this.currentClick).classList.remove('illegalMove');
+          }, 2000);
+  }
+  verifyMove(currentClick,firstNumber,secondNumber){
+    if(currentClick == firstNumber || currentClick == secondNumber){
+    }
+    else{
+        this.illegalMoveAnimation(currentClick)
+    }
+  }
+  checkLegalMove(previousclick, currentClick){
+    switch(previousclick){  
+      case 1:   
+      this.verifyMove(currentClick,5,7);
+          break;
+      case 2:  
+      this.verifyMove(currentClick,6,8);
+          break;
+      case 3:  
+      this.verifyMove(currentClick,4,7);
+          break;
+      case 4:  
+      this.verifyMove(currentClick,3,8);
+          break;
+      case 5:  
+      this.verifyMove(currentClick,1,6);
+          break;
+      case 6:  
+      this.verifyMove(currentClick,2,5);
+              break;
+      case 7:  
+      this.verifyMove(currentClick,1,3);
+          break;
+      case 8:  
+      this.verifyMove(currentClick,2,4);
+          break;
+      default:  
+          // statements  
+          console.log('error');
+          break;
+  }  
   }
     boxClick(){
         this.gameBox.addEventListener('click', (e)=>{
           if(e.target.classList.contains('box')){
+            this.currentClick = Number(e.target.id.slice(3));
+            console.log(this.currentClick);
+            this.checkLegalMove(this.previousClick,this.currentClick);
+
             e.target.style.background = '#DCB6D5';
             e.target.style.color = '#873D48';
             this.guessedWord += e.target.textContent;
@@ -99,6 +150,7 @@ class Paardensprong {
           else if(e.target.classList.contains('newWord')){
             this.startGame();
           }
+          this.previousClick = Number(e.target.id.slice(3));
         })
     }
   }
@@ -107,7 +159,8 @@ class Paardensprong {
   game.start();
 
   /*oke wat moet ik nog doen?
-    als geen paardensprong geef melding dat geen paardensprong is. (animatie met schudden van box)
-    css voor geraden woord maken
+   animatie 1 x afspelen als illegale zet. 
+   Daarna iets van reset zodat animatie volgende x weer afspeelt? hoe pak ik dit aan?
+    help knop met uitleg maken
     */
   
