@@ -96,44 +96,43 @@ class Paardensprong {
     switch(previousclick){  
       case 1:   
       this.verifyMove(currentClick,5,7);
-          break;
+          return true;
       case 2:  
       this.verifyMove(currentClick,6,8);
-          break;
+          return true;
       case 3:  
       this.verifyMove(currentClick,4,7);
-          break;
+          return true;
       case 4:  
       this.verifyMove(currentClick,3,8);
-          break;
+          return true;
       case 5:  
       this.verifyMove(currentClick,1,6);
-          break;
+          return true;
       case 6:  
       this.verifyMove(currentClick,2,5);
-              break;
+          return true;
       case 7:  
       this.verifyMove(currentClick,1,3);
-          break;
+          return true;
       case 8:  
       this.verifyMove(currentClick,2,4);
-          break;
+          return true;
       default:  
           // statements  
-          console.log('error');
-          break;
+          return false;
   }  
   }
     boxClick(){
         this.gameBox.addEventListener('click', (e)=>{
           if(e.target.classList.contains('box')){
             this.currentClick = Number(e.target.id.slice(3));
-            console.log(this.currentClick);
             this.checkLegalMove(this.previousClick,this.currentClick);
-
             e.target.style.background = '#DCB6D5';
             e.target.style.color = '#873D48';
+            //letter alleen printen als zet legaal is. 
             this.guessedWord += e.target.textContent;
+            
             console.log(this.guessedWord);
             if(this.guessedWord == this.word){
               this.score++;
