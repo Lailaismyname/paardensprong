@@ -85,53 +85,61 @@ class Paardensprong {
             document.getElementById('box'+currentClick).classList.remove('illegalMove');
           }, 2000);
   }
-  verifyMove(currentClick,firstNumber,secondNumber){
+  verifyMove(currentClick,firstNumber,secondNumber,e){
     if(currentClick == firstNumber || currentClick == secondNumber){
+      this.guessedWord += e.target.textContent;
+        e.target.style.background = '#DCB6D5';
+        e.target.style.color = '#873D48';
     }
     else{
-        this.illegalMoveAnimation(currentClick)
+        this.illegalMoveAnimation(currentClick);
+        item.style.background = '#873D48';
+        item.style.color = '#DCB6D5';
     }
   }
-  checkLegalMove(previousclick, currentClick){
+  checkLegalMove(previousclick, currentClick,e){
     switch(previousclick){  
       case 1:   
-      this.verifyMove(currentClick,5,7);
-          return true;
+      this.verifyMove(currentClick,5,7,e);
+          break;
       case 2:  
-      this.verifyMove(currentClick,6,8);
-          return true;
+      this.verifyMove(currentClick,6,8,e);
+          break;
       case 3:  
-      this.verifyMove(currentClick,4,7);
-          return true;
+      this.verifyMove(currentClick,4,7,e);
+          break;
       case 4:  
-      this.verifyMove(currentClick,3,8);
-          return true;
+      this.verifyMove(currentClick,3,8,e);
+          break;
       case 5:  
-      this.verifyMove(currentClick,1,6);
-          return true;
+      this.verifyMove(currentClick,1,6,e);
+          break;
       case 6:  
-      this.verifyMove(currentClick,2,5);
-          return true;
+      this.verifyMove(currentClick,2,5,e);
+          break;
       case 7:  
-      this.verifyMove(currentClick,1,3);
-          return true;
+      this.verifyMove(currentClick,1,3,e);
+          break;
       case 8:  
-      this.verifyMove(currentClick,2,4);
-          return true;
+      this.verifyMove(currentClick,2,4,e);
+          break;
       default:  
-          // statements  
-          return false;
+          console.log('woop')
+          break;
   }  
   }
     boxClick(){
         this.gameBox.addEventListener('click', (e)=>{
           if(e.target.classList.contains('box')){
             this.currentClick = Number(e.target.id.slice(3));
-            this.checkLegalMove(this.previousClick,this.currentClick);
-            e.target.style.background = '#DCB6D5';
-            e.target.style.color = '#873D48';
-            //letter alleen printen als zet legaal is. 
-            this.guessedWord += e.target.textContent;
+            this.checkLegalMove(this.previousClick,this.currentClick,e);
+            //e.target.style.background = '#DCB6D5';
+            //e.target.style.color = '#873D48'; 
+            if(this.guessedWord == ''){
+              this.guessedWord += e.target.textContent;
+              e.target.style.background = '#DCB6D5';
+              e.target.style.color = '#873D48';
+            }
             
             console.log(this.guessedWord);
             if(this.guessedWord == this.word){
@@ -159,7 +167,7 @@ class Paardensprong {
 
   /*oke wat moet ik nog doen?
    animatie 1 x afspelen als illegale zet. 
-    oke als animatie heeft afgespeeld, kleur resetten, en zorgen dat letter niet in guessedWord word gepushed
+    als geen paardensprong reset achtergrond kleur
     help knop met uitleg maken
     */
   
