@@ -80,9 +80,9 @@ class Paardensprong {
     this.gameBox.innerHTML = `<div class="win"><p>${this.word} is correct!!<p><button class=newWord>New Word</button></div>`
   }
   illegalMoveAnimation(currentClick){
-    document.getElementById('box'+this.currentClick).classList.add('illegalMove');
+    document.getElementById('box'+currentClick).classList.add('illegalMove');
             setTimeout(function(){
-            document.getElementById('box'+this.currentClick).classList.remove('illegalMove');
+            document.getElementById('box'+currentClick).classList.remove('illegalMove');
           }, 2000);
   }
   verifyMove(currentClick,firstNumber,secondNumber){
@@ -160,7 +160,7 @@ class Paardensprong {
 
   /*oke wat moet ik nog doen?
    animatie 1 x afspelen als illegale zet. 
-   Daarna iets van reset zodat animatie volgende x weer afspeelt? hoe pak ik dit aan?
+    oke als animatie heeft afgespeeld, kleur resetten, en zorgen dat letter niet in guessedWord word gepushed
     help knop met uitleg maken
     */
   
