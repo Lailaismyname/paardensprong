@@ -56,7 +56,7 @@ class Paardensprong {
     renderGame(){
       for(let i = 0; i <= 8; i++){
         if(i == 4){
-          this.gameBox.innerHTML += `<div id="middleBox" class="reset">reset</div>`
+          this.gameBox.innerHTML += `<div id="middleBox" class="reset"><button class="horseBtn resetBtn">reset</button><button class="horseBtn helpBtn">help</button></div>`
         }else if(i > 4){
           this.gameBox.innerHTML += `<div id="box${i}" class="box"></div>`;
         }
@@ -148,13 +148,16 @@ class Paardensprong {
               this.printWinScreen();
             }
           }
-          else if(e.target.classList.contains('reset')){
+          else if(e.target.classList.contains('resetBtn')){
             this.gameBox.querySelectorAll('.box').forEach(item =>{
               item.style.background = '#873D48';
               item.style.color = '#DCB6D5';
               this.guessedWord = '';
               this.legalMove = true;
             })
+          }
+          else if(e.target.classList.contains('helpBtn')){
+            // uitleg geven, hoe? met modal ofzo? 
           }
           else if(e.target.classList.contains('newWord')){
             this.startGame();

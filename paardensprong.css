@@ -4,6 +4,7 @@ Solid Pink                  #873D48
 Pink Lavender               #DCB6D5
 */
 *{
+    background:#DCB6D5;
     padding: 0px;
     margin: 0px;
     box-sizing: content-box;
@@ -48,6 +49,9 @@ body{
     background-position: center;
     font-size: 30px;
     text-shadow: 2px 2px #141B41;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
 }
 /*      winscherm               */
 #gameBox >.win{
@@ -81,4 +85,18 @@ body{
     animation-name: illegalMove;
     animation-duration: 1s;
     background: #141B41;
+}
+.horseBtn{
+    background-color: #141B41;
+    margin: 0 5px;
+    width: 60px;
+    height: 40px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 900;
+    color: #DCB6D5;
+    text-shadow: 1px 1px #141B41;
+    letter-spacing: 1px;
 }
