@@ -31,12 +31,13 @@ class Paardensprong {
       "triangle","tropical","turnover","ultimate","umbrella","universe","unlawful","unlikely","valuable","variable","vertical","victoria","violence","volatile","warranty","weakness","weighted",
       "whatever","whenever","wherever","wildlife","wireless","withdraw","woodland","workshop","yourself"];
       this.possibleSequences = [[1,7,3,4,8,2,6,5],[1,5,6,2,8,4,3,7],[2,6,5,1,7,3,4,8],[2,8,4,3,7,1,5,6],[3,4,8,2,6,5,1,7],[3,7,1,5,6,2,8,4],[4,3,7,1,5,6,2,8],[4,8,2,6,5,1,7,3],[5,1,7,3,4,8,2,6],[5,6,2,8,4,3,7,1],[6,2,8,4,3,7,1,5],[6,5,1,7,3,4,8,2],[7,1,5,6,2,8,4,3],[7,3,4,8,2,6,5,1],[8,2,6,5,1,7,3,4],[8,4,3,7,1,5,6,2]];
-      this.score = localStorage.getItem('score') || 0 ;
-      this.word = this.wordList[this.score]; // word :  this.word;
+      this.score = 0 ;
+      this.word = this.wordList[this.score];
       this.gameBox = document.getElementById('gameBox');
       this.guessedWord = '';
       this.previousClick;
       this.currentClick;
+      this.legalMove = true;
     }
     start(){
         this.startGame();
@@ -90,9 +91,11 @@ class Paardensprong {
       this.guessedWord += e.target.textContent;
         e.target.style.background = '#DCB6D5';
         e.target.style.color = '#873D48';
+        this.legalMove = true;
     }
     else{
         this.illegalMoveAnimation(currentClick);
+        this.legalMove = false;
         e.target.style.background = '#873D48';
         e.target.style.color = '#DCB6D5';
     }
@@ -133,8 +136,6 @@ class Paardensprong {
           if(e.target.classList.contains('box')){
             this.currentClick = Number(e.target.id.slice(3));
             this.checkLegalMove(this.previousClick,this.currentClick,e);
-            //e.target.style.background = '#DCB6D5';
-            //e.target.style.color = '#873D48'; 
             if(this.guessedWord == ''){
               this.guessedWord += e.target.textContent;
               e.target.style.background = '#DCB6D5';
@@ -152,12 +153,15 @@ class Paardensprong {
               item.style.background = '#873D48';
               item.style.color = '#DCB6D5';
               this.guessedWord = '';
+              this.legalMove = true;
             })
           }
           else if(e.target.classList.contains('newWord')){
             this.startGame();
           }
-          this.previousClick = Number(e.target.id.slice(3));
+          if (this.legalMove == true){
+            this.previousClick = Number(e.target.id.slice(3));
+          }
         })
     }
   }
@@ -166,8 +170,6 @@ class Paardensprong {
   game.start();
 
   /*oke wat moet ik nog doen?
-   animatie 1 x afspelen als illegale zet. 
-    previousclick aanpassen zodat ie verder gaat. 
     help knop met uitleg maken
     */
   
