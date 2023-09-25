@@ -157,7 +157,6 @@ class Paardensprong {
             })
           }
           else if(e.target.classList.contains('helpBtn')){
-            // uitleg geven, hoe? met modal ofzo? 
           }
           else if(e.target.classList.contains('newWord')){
             this.startGame();
@@ -172,7 +171,4 @@ class Paardensprong {
   const game = new Paardensprong;
   game.start();
 
-  /*oke wat moet ik nog doen?
-    help knop met uitleg maken
-    */
   
