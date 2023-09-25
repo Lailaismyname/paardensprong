@@ -1,6 +1,6 @@
 # paardensprong
 
-This is a game i made called <a href="https://lailaismyname.github.io/paardensprong/">Paardensprong</a><br>
+This is a game i made called Paardensprong<br>
 The live version is <a href="https://lailaismyname.github.io/paardensprong/">Here</a></br>
 And i also made a version of this game in python which can be found <a href="https://github.com/Lailaismyname/paardensprong_python">Here</a><br>
 It's a simple game, you need to guess te word. <br>
